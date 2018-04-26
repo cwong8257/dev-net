@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -9,6 +10,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/devconnector');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/users', users);
 app.use('/api/profile', profile);
