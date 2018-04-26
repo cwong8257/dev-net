@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
     const avatar = gravatar.url(email, {
       s: '200',
       r: 'pg',
-      d: 'mm'
+      d: 'mm',
     });
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
       name,
       email,
       avatar,
-      password: hash
+      password: hash,
     });
     const savedUser = await newUser.save();
 

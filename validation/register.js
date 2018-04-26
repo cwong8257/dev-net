@@ -33,6 +33,6 @@ module.exports = (data) => {
 
   return {
     errors,
-    isValid
+    isValid,
   };
 };

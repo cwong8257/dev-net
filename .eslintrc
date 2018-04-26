@@ -11,7 +11,6 @@
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
     "no-console": "off",
-    "comma-dangle": "off",
     "no-unused-vars": [
       "error",
       {
