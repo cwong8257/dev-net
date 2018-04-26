@@ -1,0 +1,16 @@
+{
+  "prettier.printWidth": 120,
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": true,
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "editor.formatOnSave": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "javascript.format.enable": false,
+  "json.format.enable": false
+}
