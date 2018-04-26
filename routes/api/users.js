@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
 const User = require('../../models/User');
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 const router = express.Router();
 
@@ -12,12 +14,20 @@ const router = express.Router();
 // @desc    Register user
 // @access  Public
 router.post('/register', async (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const { name, email, password } = req.body;
 
   try {
     const user = await User.findOne({ email });
 
-    if (user) return res.status(400).json({ email: 'Email already exists' });
+    if (user) {
+      errors.email = 'Email already exists';
+      return res.status(400).json(errors);
+    }
     const avatar = gravatar.url(email, {
       s: '200',
       r: 'pg',
@@ -43,20 +53,27 @@ router.post('/register', async (req, res) => {
 // @desc    Login user / Return JWT Token
 // @access  Public
 router.post('/login', async (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const { email, password } = req.body;
 
   try {
     const user = await User.findOne({ email });
-    const { id, name, avatar } = user;
 
     if (!user) {
-      return res.status(404).json({ email: 'User not found' });
+      errors.email = 'User not found';
+      return res.status(404).json(errors);
     }
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ password: 'Password incorrect' });
+      errors.password = 'Password incorrect';
+      return res.status(400).json(errors);
     }
+    const { id, name, avatar } = user;
     const payload = { id, name, avatar };
     const token = jwt.sign(payload, process.env.SECRET_OR_KEY, { expiresIn: 3600 });
 

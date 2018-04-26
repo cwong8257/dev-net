@@ -17,6 +17,12 @@
       {
         "args": "none"
       }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
     ]
   }
 }
