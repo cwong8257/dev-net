@@ -4,9 +4,9 @@ const isEmpty = require('./isEmpty');
 
 module.exports = (data) => {
   const errors = {};
-  const fields = ['name', 'email', 'password', 'confirm'];
+  const requiredFields = ['name', 'email', 'password', 'confirm'];
 
-  fields.forEach((field) => {
+  requiredFields.forEach((field) => {
     data[field] = !isEmpty(data[field]) ? data[field] : '';
   });
 
@@ -23,7 +23,7 @@ module.exports = (data) => {
     errors.confirm = 'Passwords must match';
   }
 
-  fields.forEach((field) => {
+  requiredFields.forEach((field) => {
     if (Validator.isEmpty(data[field])) {
       errors[field] = `${field[0].toUpperCase() + field.substring(1)} field is required`;
     }

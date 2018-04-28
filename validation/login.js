@@ -6,6 +6,10 @@ module.exports = (data) => {
   const errors = {};
   const requiredFields = ['email', 'password'];
 
+  requiredFields.forEach((field) => {
+    data.text = !isEmpty(data.text) ? data.text : '';
+  });
+
   if (!Validator.isEmail(data.email)) {
     errors.email = 'Email is invalid';
   }

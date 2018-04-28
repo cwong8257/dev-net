@@ -5,6 +5,10 @@ module.exports = (data) => {
   const requiredFields = ['title', 'company', 'from'];
 
   requiredFields.forEach((field) => {
+    data.text = !isEmpty(data.text) ? data.text : '';
+  });
+
+  requiredFields.forEach((field) => {
     if (isEmpty(data[field])) {
       errors[field] = `${field[0].toUpperCase() + field.substring(1)} field is required`;
     }

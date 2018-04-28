@@ -7,6 +7,10 @@ module.exports = (data) => {
   const requiredFields = ['handle', 'status', 'skills'];
   const siteUrls = ['website', 'youtube', 'twitter', 'facebook', 'linkedin', 'instagram'];
 
+  requiredFields.forEach((field) => {
+    data.text = !isEmpty(data.text) ? data.text : '';
+  });
+
   if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
     errors.handle = 'Handle needs to be between 2 and 40 characters';
   }
