@@ -1,14 +1,8 @@
-const Validator = require('validator');
-
 const isEmpty = require('./isEmpty');
 
 module.exports = (data) => {
   const errors = {};
-  const requiredFields = ['email', 'password'];
-
-  if (!Validator.isEmail(data.email)) {
-    errors.email = 'Email is invalid';
-  }
+  const requiredFields = ['school', 'degree', 'from', 'fieldOfStudy'];
 
   requiredFields.forEach((field) => {
     if (isEmpty(data[field])) {
