@@ -2,6 +2,7 @@ const express = require('express');
 const { ObjectId } = require('mongoose').Types;
 const passport = require('passport');
 
+const User = require('../../models/User');
 const Profile = require('../../models/Profile');
 const validateProfileInput = require('../../validation/profile');
 const validateExperienceInput = require('../../validation/experience');
@@ -73,20 +74,20 @@ router.get('/handle/:handle', async (req, res) => {
   }
 });
 
-// @route GET api/profile/user/:user_id
+// @route GET api/profile/user/:userId
 // @desc Get profile by user ID
 // @access Public
-router.get('/user/:user_id', async (req, res) => {
+router.get('/user/:userId', async (req, res) => {
   const errors = {};
-  const { user_id } = req.params;
+  const { userId } = req.params;
 
-  if (!ObjectId.isValid(user_id)) {
-    errors.user_id = 'Invalid user ID';
+  if (!ObjectId.isValid(userId)) {
+    errors.userId = 'Invalid user ID';
     return res.status(404).json(errors);
   }
 
   try {
-    const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', [
+    const profile = await Profile.findOne({ user: req.params.userId }).populate('user', [
       'name',
       'avatar',
     ]);
@@ -247,6 +248,72 @@ router.post('/education', passport.authenticate('jwt', { session: false }), asyn
     profile.education.unshift(newEducation);
     const savedProfile = await profile.save();
     return res.json(savedProfile);
+  } catch (err) {
+    errors.server = 'Something went wrong. Try again later';
+    return res.status(404).json(errors);
+  }
+});
+
+// @route DELETE api/profile/experience/:experienceId
+// @desc Delete experience from profile
+// @access Private
+router.delete(
+  '/experience/:experienceId',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    const errors = {};
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+      const removeIndex = profile.experience.map(item => item.id).indexOf(req.params.experienceId);
+
+      profile.experience.splice(removeIndex, 1);
+
+      const savedProfile = await profile.save();
+
+      return res.json(savedProfile);
+    } catch (err) {
+      errors.server = 'Something went wrong. Try again later';
+      return res.status(404).json(errors);
+    }
+  },
+);
+
+// @route DELETE api/profile/education/:educationId
+// @desc Delete education from profile
+// @access Private
+router.delete(
+  '/education/:educationId',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    const errors = {};
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+      const removeIndex = profile.education.map(item => item.id).indexOf(req.params.educationId);
+
+      profile.education.splice(removeIndex, 1);
+
+      const savedProfile = await profile.save();
+
+      return res.json(savedProfile);
+    } catch (err) {
+      errors.server = 'Something went wrong. Try again later';
+      return res.status(404).json(errors);
+    }
+  },
+);
+
+// @route DELETE api/profile
+// @desc Delete user and profile
+// @access Private
+router.delete('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  const errors = {};
+  const { id } = req.user;
+  try {
+    await Promise.all([Profile.findOneAndRemove({ user: id }), User.findOneAndRemove({ _id: id })]);
+
+    return res.json({ success: true });
   } catch (err) {
     errors.server = 'Something went wrong. Try again later';
     return res.status(404).json(errors);
