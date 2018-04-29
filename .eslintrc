@@ -22,6 +22,7 @@
       {
         "props": false
       }
-    ]
+    ],
+    "no-underscore-dangle": "off"
   }
 }
