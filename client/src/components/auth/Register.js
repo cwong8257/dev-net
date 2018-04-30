@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import classnames from 'classnames';
 import qs from 'qs';
+
+import { registerUser } from '../../actions/authActions';
 
 class Register extends Component {
   constructor() {
@@ -116,4 +120,18 @@ class Register extends Component {
   }
 }
 
-export default Register;
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    isAuthenticated: PropTypes.bool,
+    user: PropTypes.object,
+  }).isRequired,
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+const mapDispatchToProps = { registerUser };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
