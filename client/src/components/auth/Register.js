@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
-import qs from 'qs';
 
 import { registerUser } from '../../actions/authActions';
 
@@ -18,6 +17,12 @@ class Register extends Component {
       errors: '',
     };
   }
+
+  componentWillReceiveProps = ({ errors }) => {
+    if (errors) {
+      this.setState({ errors });
+    }
+  };
 
   onChange = (e) => {
     const { name, value } = e.target;
@@ -35,12 +40,7 @@ class Register extends Component {
       password,
       confirm,
     };
-
-    try {
-      await axios.post('/api/users/register', qs.stringify(newUser));
-    } catch (err) {
-      this.setState(() => ({ errors: err.response.data }));
-    }
+    this.props.registerUser(newUser, this.props.history);
   };
 
   render() {
@@ -126,12 +126,15 @@ Register.propTypes = {
     isAuthenticated: PropTypes.bool,
     user: PropTypes.object,
   }).isRequired,
+  errors: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth,
+const mapStateToProps = ({ auth, errors }) => ({
+  auth,
+  errors,
 });
 
 const mapDispatchToProps = { registerUser };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));
