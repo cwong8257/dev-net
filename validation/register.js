@@ -25,7 +25,11 @@ module.exports = (data) => {
 
   requiredFields.forEach((field) => {
     if (Validator.isEmpty(data[field])) {
-      errors[field] = `${field[0].toUpperCase() + field.substring(1)} field is required`;
+      if (field === 'confirm') {
+        errors[field] = 'Confirm password field is required';
+      } else {
+        errors[field] = `${field[0].toUpperCase() + field.substring(1)} field is required`;
+      }
     }
   });
 

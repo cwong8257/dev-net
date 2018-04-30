@@ -10,7 +10,7 @@ const validateLoginInput = require('../../validation/login');
 
 const router = express.Router();
 
-// @route   GET api/users/register
+// @route   POST api/users/register
 // @desc    Register user
 // @access  Public
 router.post('/register', async (req, res) => {
