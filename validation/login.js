@@ -7,7 +7,7 @@ module.exports = (data) => {
   const requiredFields = ['email', 'password'];
 
   requiredFields.forEach((field) => {
-    data.text = !isEmpty(data.text) ? data.text : '';
+    data[field] = isEmpty(data[field]) ? '' : data[field];
   });
 
   if (!Validator.isEmail(data.email)) {
@@ -15,7 +15,7 @@ module.exports = (data) => {
   }
 
   requiredFields.forEach((field) => {
-    if (isEmpty(data[field])) {
+    if (Validator.isEmpty(data[field])) {
       errors[field] = `${field[0].toUpperCase() + field.substring(1)} field is required`;
     }
   });

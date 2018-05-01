@@ -24,7 +24,7 @@ export const setCurrentUser = decoded => ({
 
 export const loginUser = userData => async (dispatch) => {
   try {
-    const response = await axios.post('/api/users/login', userData);
+    const response = await axios.post('/api/users/login', qs.stringify(userData));
     const { token } = response.data;
     localStorage.setItem('jwtToken', token);
     setAuthToken(token);

@@ -5,7 +5,7 @@ module.exports = (data) => {
   const requiredFields = ['title', 'company', 'from'];
 
   requiredFields.forEach((field) => {
-    data.text = !isEmpty(data.text) ? data.text : '';
+    data[field] = isEmpty(data[field]) ? '' : data[field];
   });
 
   requiredFields.forEach((field) => {

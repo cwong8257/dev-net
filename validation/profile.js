@@ -8,7 +8,7 @@ module.exports = (data) => {
   const siteUrls = ['website', 'youtube', 'twitter', 'facebook', 'linkedin', 'instagram'];
 
   requiredFields.forEach((field) => {
-    data.text = !isEmpty(data.text) ? data.text : '';
+    data[field] = isEmpty(data[field]) ? '' : data[field];
   });
 
   if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {

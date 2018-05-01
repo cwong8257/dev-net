@@ -5,7 +5,7 @@ module.exports = (data) => {
   const requiredFields = ['school', 'degree', 'from', 'fieldOfStudy'];
 
   requiredFields.forEach((field) => {
-    data.text = !isEmpty(data.text) ? data.text : '';
+    data[field] = isEmpty(data[field]) ? '' : data[field];
   });
 
   requiredFields.forEach((field) => {

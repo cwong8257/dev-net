@@ -7,7 +7,7 @@ module.exports = (data) => {
   const requiredFields = ['name', 'email', 'password', 'confirm'];
 
   requiredFields.forEach((field) => {
-    data[field] = !isEmpty(data[field]) ? data[field] : '';
+    data[field] = isEmpty(data[field]) ? '' : data[field];
   });
 
   if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
