@@ -38,7 +38,7 @@ TextFieldGroup.propTypes = {
   value: PropTypes.string,
   error: PropTypes.string,
   info: PropTypes.string,
-  disabled: PropTypes.string,
+  disabled: PropTypes.bool,
   label: PropTypes.string,
 };
 
