@@ -92,7 +92,6 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  errors: PropTypes.objectOf(PropTypes.string).isRequired,
   history: PropTypes.object.isRequired,
 };
 

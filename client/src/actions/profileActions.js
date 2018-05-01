@@ -1,7 +1,13 @@
 import axios from 'axios';
 import qs from 'qs';
 
-import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE, GET_ERRORS } from './types';
+import {
+  GET_PROFILE,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE,
+  GET_ERRORS,
+  SET_CURRENT_USER,
+} from './types';
 
 export const clearCurrentProfile = () => ({
   type: CLEAR_CURRENT_PROFILE,
@@ -16,7 +22,6 @@ export const createProfile = (profileData, history) => async (dispatch) => {
     await axios.post('/api/profile', qs.stringify(profileData));
     history.push('/dashboard');
   } catch (err) {
-    console.log(err);
     dispatch({
       type: GET_ERRORS,
       payload: err.response.data,
@@ -36,6 +41,21 @@ export const getCurrentProfile = () => async (dispatch) => {
     dispatch({
       type: GET_PROFILE,
       payload: {},
+    });
+  }
+};
+
+export const deleteAccount = () => async (dispatch) => {
+  try {
+    await axios.delete('/api/profile');
+    dispatch({
+      type: SET_CURRENT_USER,
+      payload: {},
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data,
     });
   }
 };

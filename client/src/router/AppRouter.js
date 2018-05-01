@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
 import Navbar from '../components/layout/Navbar';
 import Landing from '../components/layout/Landing';
