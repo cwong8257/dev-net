@@ -9,6 +9,7 @@ import Login from '../components/auth/Login';
 import Dashboard from '../components/dashboard/Dashboard';
 import CreateProfile from '../components/create-profile/CreateProfile';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 import '../App.css';
 
@@ -16,10 +17,16 @@ const AppRouter = () => (
   <BrowserRouter>
     <div className="App">
       <Navbar />
-      <Route exact path="/" component={Landing} />
+      <Switch>
+        <PublicRoute exact path="/" component={Landing} />
+      </Switch>
       <div className="container">
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
+        <Switch>
+          <PublicRoute exact path="/register" component={Register} />
+        </Switch>
+        <Switch>
+          <PublicRoute exact path="/login" component={Login} />
+        </Switch>
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>

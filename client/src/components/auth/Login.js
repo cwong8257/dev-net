@@ -6,29 +6,12 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import { loginUser } from '../../actions/authActions';
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      password: '',
-      errors: '',
-    };
-  }
+  static getDerivedStateFromProps = ({ errors }) => ({ errors });
 
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
-    }
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
-    }
-
-    if (nextProps.errors) {
-      this.setState(() => ({ errors: nextProps.errors }));
-    }
+  state = {
+    email: '',
+    password: '',
+    errors: '',
   };
 
   onChange = (e) => {
@@ -82,16 +65,10 @@ class Login extends Component {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.shape({
-    isAuthenticated: PropTypes.bool,
-    user: PropTypes.object,
-  }).isRequired,
   errors: PropTypes.objectOf(PropTypes.string).isRequired,
-  history: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = ({ auth, errors }) => ({
-  auth,
+const mapStateToProps = ({ errors }) => ({
   errors,
 });
 

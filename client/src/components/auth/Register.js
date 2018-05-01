@@ -7,27 +7,14 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import { registerUser } from '../../actions/authActions';
 
 class Register extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: '',
-      email: '',
-      password: '',
-      confirm: '',
-      errors: '',
-    };
-  }
+  static getDerivedStateFromProps = ({ errors }) => ({ errors });
 
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
-    }
-  }
-
-  componentWillReceiveProps = ({ errors }) => {
-    if (errors) {
-      this.setState({ errors });
-    }
+  state = {
+    name: '',
+    email: '',
+    password: '',
+    confirm: '',
+    errors: '',
   };
 
   onChange = (e) => {
@@ -105,10 +92,6 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.shape({
-    isAuthenticated: PropTypes.bool,
-    user: PropTypes.object,
-  }).isRequired,
   errors: PropTypes.objectOf(PropTypes.string).isRequired,
   history: PropTypes.object.isRequired,
 };
