@@ -26,7 +26,7 @@ const InputGroup = ({
 
 InputGroup.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string,
@@ -35,6 +35,7 @@ InputGroup.propTypes = {
 };
 
 InputGroup.defaultProps = {
+  type: 'text',
   placeholder: '',
   value: null,
   error: null,

@@ -32,7 +32,7 @@ const TextFieldGroup = ({
 
 TextFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string,
@@ -43,6 +43,7 @@ TextFieldGroup.propTypes = {
 };
 
 TextFieldGroup.defaultProps = {
+  type: 'text',
   placeholder: '',
   value: null,
   error: null,
