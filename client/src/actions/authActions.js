@@ -17,7 +17,7 @@ export const registerUser = (userData, history) => async (dispatch) => {
   }
 };
 
-export const setCurrentUser = decoded => ({
+export const setCurrentUser = (decoded = {}) => ({
   type: SET_CURRENT_USER,
   payload: decoded,
 });
@@ -36,4 +36,10 @@ export const loginUser = userData => async (dispatch) => {
       payload: err.response.data,
     });
   }
+};
+
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem('jwtToken');
+  setAuthToken();
+  dispatch(setCurrentUser());
 };
