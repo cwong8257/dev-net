@@ -16,7 +16,7 @@ class CreateProfile extends Component {
         ...prevState,
         ...profile.profile,
         ...profile.profile.social,
-        ...errors,
+        errors,
         skills: profile.profile.skills.join(', '),
       };
     }
