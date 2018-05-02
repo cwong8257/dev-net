@@ -31,7 +31,7 @@ class CreateProfile extends Component {
     location: '',
     status: '',
     skills: '',
-    githubusername: '',
+    githubUsername: '',
     bio: '',
     twitter: '',
     facebook: '',
@@ -50,12 +50,12 @@ class CreateProfile extends Component {
 
     const profileData = (({
       handle,
-      compoany,
+      company,
       website,
       location,
       status,
       skills,
-      githubusername,
+      githubUsername,
       bio,
       twitter,
       facebook,
@@ -64,12 +64,12 @@ class CreateProfile extends Component {
       instagram,
     }) => ({
       handle,
-      compoany,
+      company,
       website,
       location,
       status,
       skills,
-      githubusername,
+      githubUsername,
       bio,
       twitter,
       facebook,
@@ -217,7 +217,7 @@ class CreateProfile extends Component {
                 <TextFieldGroup
                   placeholder="Github Username"
                   name="githubusername"
-                  value={this.state.githubusername}
+                  value={this.state.githubUsername}
                   onChange={this.onChange}
                   error={errors.githubusername}
                   info="If you want your latest repos and a Github link, include your username"

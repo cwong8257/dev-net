@@ -7,6 +7,7 @@ import {
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
   SET_CURRENT_USER,
+  GET_PROFILES,
 } from './types';
 
 export const clearCurrentProfile = () => ({
@@ -40,6 +41,22 @@ export const getCurrentProfile = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: GET_PROFILE,
+      payload: {},
+    });
+  }
+};
+
+export const getProfiles = () => async (dispatch) => {
+  try {
+    dispatch(setProfileLoading());
+    const response = await axios.get('/api/profile/all');
+    dispatch({
+      type: GET_PROFILES,
+      payload: response.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_PROFILES,
       payload: {},
     });
   }

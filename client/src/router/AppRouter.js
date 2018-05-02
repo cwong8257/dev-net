@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Navbar from '../components/layout/Navbar';
 import Landing from '../components/layout/Landing';
@@ -11,6 +11,7 @@ import CreateProfile from '../components/create-profile/CreateProfile';
 import EditProfile from '../components/edit-profile/EditProfile';
 import AddExperience from '../components/add-credentials/AddExperience';
 import AddEducation from '../components/add-credentials/AddEducation';
+import Profiles from '../components/profiles/Profiles';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -20,6 +21,7 @@ const AppRouter = () => (
   <BrowserRouter>
     <div className="App">
       <Navbar />
+      <Route exact path="/profiles" component={Profiles} />
       <Switch>
         <PublicRoute exact path="/" component={Landing} />
       </Switch>
