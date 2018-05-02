@@ -69,6 +69,21 @@ export const addEducation = (educationData, history) => async (dispatch) => {
   }
 };
 
+export const deleteExperience = experienceId => async (dispatch) => {
+  try {
+    const response = await axios.delete(`/api/profile/experience/${experienceId}`);
+    dispatch({
+      type: GET_PROFILE,
+      payload: response.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data,
+    });
+  }
+};
+
 export const deleteAccount = () => async (dispatch) => {
   try {
     await axios.delete('/api/profile');
