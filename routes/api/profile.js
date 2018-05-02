@@ -132,10 +132,26 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
     if (req.body[field]) profileFields[field] = req.body[field];
   });
 
+  if (
+    profileFields.website.indexOf('http://') !== 0 &&
+    profileFields.website.indexOf('https://') !== 0
+  ) {
+    profileFields.website = `http://${profileFields.website}`;
+  }
+
   profileFields.social = {};
 
   socialFields.forEach((field) => {
-    if (req.body[field]) profileFields.social[field] = req.body[field];
+    if (req.body[field]) {
+      profileFields.social[field] = req.body[field];
+    }
+
+    if (
+      profileFields.social[field].indexOf('http://') !== 0 &&
+      profileFields.social[field].indexOf('https://') !== 0
+    ) {
+      profileFields.social[field] = `https://${profileFields.social[field]}`;
+    }
   });
 
   if (typeof req.body.skills !== 'undefined') {
