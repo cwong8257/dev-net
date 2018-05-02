@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import { addExperience } from '../../actions/profileActions';
 
 class AddExperience extends Component {
+  static getDerivedStateFromProps = ({ errors }) => ({ errors });
+
   state = {
     company: '',
     title: '',
@@ -18,14 +21,29 @@ class AddExperience extends Component {
     errors: {},
     disabled: false,
   };
+
   onSubmit = (e) => {
     e.preventDefault();
-    console.log('submit');
+    const experienceData = (({
+      company, title, location, from, to, current, description,
+    }) => ({
+      company,
+      title,
+      location,
+      from,
+      to,
+      current,
+      description,
+    }))(this.state);
+
+    this.props.addExperience(experienceData, this.props.history);
   };
+
   onChange = (e) => {
     const { name, value } = e.target;
     this.setState(() => ({ [name]: value }));
   };
+
   onCheck = (e) => {
     this.setState(({ current, disabled }) => ({
       current: !current,
@@ -120,12 +138,16 @@ class AddExperience extends Component {
   }
 }
 
-// AddExperience.propTypes = {
-//   profile: PropTypes.object.isRequired,
-//   errors: PropTypes.object.isRequired,
-// };
+AddExperience.propTypes = {
+  addExperience: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = ({ profile, errors }) => ({ profile, errors });
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  addExperience,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddExperience));

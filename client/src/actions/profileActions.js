@@ -45,6 +45,18 @@ export const getCurrentProfile = () => async (dispatch) => {
   }
 };
 
+export const addExperience = (experienceData, history) => async (dispatch) => {
+  try {
+    await axios.post('/api/profile/experience', qs.stringify(experienceData));
+    history.push('/dashboard');
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data,
+    });
+  }
+};
+
 export const deleteAccount = () => async (dispatch) => {
   try {
     await axios.delete('/api/profile');
