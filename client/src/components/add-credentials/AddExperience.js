@@ -140,8 +140,6 @@ class AddExperience extends Component {
 
 AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
