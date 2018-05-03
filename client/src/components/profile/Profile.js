@@ -59,7 +59,11 @@ class Profile extends Component {
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      handle: PropTypes.string,
+    }),
+  }).isRequired,
   history: PropTypes.object.isRequired,
 };
 

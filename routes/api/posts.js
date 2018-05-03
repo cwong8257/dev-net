@@ -151,7 +151,6 @@ router.post(
       const savedPost = await post.save();
       return res.json(savedPost);
     } catch (err) {
-      console.log(err);
       return res.status(404).json({ post: 'No post found' });
     }
   },
