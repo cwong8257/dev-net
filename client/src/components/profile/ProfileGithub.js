@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 class ProfileGithub extends Component {
   state = {
@@ -18,8 +17,9 @@ class ProfileGithub extends Component {
       count, sort, clientId, clientSecret,
     } = this.state;
     try {
-      const response = await axios.get(`https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`);
-      this.setState(() => ({ repos: response.data }));
+      const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`);
+      const repos = await response.json();
+      this.setState(() => ({ repos }));
     } catch (err) {
       console.log(err);
     }
