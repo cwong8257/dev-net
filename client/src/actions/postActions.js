@@ -1,11 +1,27 @@
 import axios from 'axios';
 import qs from 'qs';
 
-import { ADD_POST, GET_ERRORS, POST_LOADING, GET_POSTS, DELETE_POST } from './types';
+import { GET_POST, ADD_POST, POST_LOADING, GET_POSTS, DELETE_POST, GET_ERRORS } from './types';
 
 export const setPostLoading = () => ({
   type: POST_LOADING,
 });
+
+export const getPost = postId => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/posts/${postId}`);
+
+    dispatch({
+      type: GET_POST,
+      payload: response.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_POST,
+      payload: null,
+    });
+  }
+};
 
 export const addPost = postData => async (dispatch) => {
   try {

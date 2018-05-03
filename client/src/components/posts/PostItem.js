@@ -29,7 +29,7 @@ class PostItem extends Component {
 
   render() {
     const {
-      auth, _id, avatar, name, likes, text, user,
+      auth, _id, avatar, name, likes, text, user, showActions,
     } = this.props;
     return (
       <div className="card card-body mb-3">
@@ -43,36 +43,40 @@ class PostItem extends Component {
           </div>
           <div className="col-md-10">
             <p className="lead">{text}</p>
-            <button
-              type="button"
-              onClick={e => this.onLikeClick(_id)}
-              className="btn btn-light mr-1"
-            >
-              <i
-                className={classnames('fas fa-thumbs-up', {
-                  'text-info': this.findUserLike(likes),
-                })}
-              />
-              <span className="badge badge-light">{likes.length}</span>
-            </button>
-            <button
-              type="button"
-              onClick={e => this.onUnlikeClick(_id)}
-              className="btn btn-light mr-1"
-            >
-              <i className="text-secondary fas fa-thumbs-down" />
-            </button>
-            <Link to={`/post/${_id}`} className="btn btn-info mr-1">
-              Comments
-            </Link>
-            {user === auth.user.id && (
-              <button
-                type="button"
-                onClick={e => this.onDeleteClick(_id)}
-                className="btn btn-danger mr-1"
-              >
-                <i className="fas fa-times" />
-              </button>
+            {showActions && (
+              <span>
+                <button
+                  type="button"
+                  onClick={e => this.onLikeClick(_id)}
+                  className="btn btn-light mr-1"
+                >
+                  <i
+                    className={classnames('fas fa-thumbs-up', {
+                      'text-info': this.findUserLike(likes),
+                    })}
+                  />
+                  <span className="badge badge-light">{likes.length}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={e => this.onUnlikeClick(_id)}
+                  className="btn btn-light mr-1"
+                >
+                  <i className="text-secondary fas fa-thumbs-down" />
+                </button>
+                <Link to={`/post/${_id}`} className="btn btn-info mr-1">
+                  Comments
+                </Link>
+                {user === auth.user.id && (
+                  <button
+                    type="button"
+                    onClick={e => this.onDeleteClick(_id)}
+                    className="btn btn-danger mr-1"
+                  >
+                    <i className="fas fa-times" />
+                  </button>
+                )}
+              </span>
             )}
           </div>
         </div>
@@ -92,6 +96,11 @@ PostItem.propTypes = {
   likes: PropTypes.array.isRequired,
   text: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
+  showActions: PropTypes.bool,
+};
+
+PostItem.defaultProps = {
+  showActions: true,
 };
 
 const mapStateToProps = ({ auth }) => ({ auth });
