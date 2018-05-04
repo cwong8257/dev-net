@@ -23,14 +23,14 @@ import '../App.css';
 
 const AppRouter = () => (
   <BrowserRouter>
-    <div className="App">
+    <div className="App bg-light">
       <Navbar />
-      <Route exact path="/profiles" component={Profiles} />
-      <Route exact path="/profile/:handle" component={Profile} />
       <Switch>
         <PublicRoute exact path="/" component={Landing} />
       </Switch>
       <div className="container">
+        <Route exact path="/profiles" component={Profiles} />
+        <Route exact path="/profile/:handle" component={Profile} />
         <Switch>
           <PublicRoute exact path="/register" component={Register} />
         </Switch>
