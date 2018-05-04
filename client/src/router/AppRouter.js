@@ -23,7 +23,7 @@ import '../App.css';
 
 const AppRouter = () => (
   <BrowserRouter>
-    <div className="App bg-light">
+    <div className="App">
       <Navbar />
       <Switch>
         <PublicRoute exact path="/" component={Landing} />

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const ProfileHeader = ({
-  user, status, company, location, website, social, bio,
+  user, status, company, location, website, social, bio, editable,
 }) => {
   const {
     twitter, facebook, linkedin, youtube, instagram,
@@ -12,6 +13,11 @@ const ProfileHeader = ({
   return (
     <div className="card mb-3">
       <div className="card-body">
+        {editable && (
+          <Link to="/edit-profile" className="btn btn-light float-right">
+            <i className="fas fa-user-circle text-info mr-1" /> Edit Profile
+          </Link>
+        )}
         <div className="row">
           <div className="col-12 col-sm-3">
             <img className="rounded-circle img-thumbnail" src={avatar} alt={name} />
@@ -71,6 +77,7 @@ ProfileHeader.propTypes = {
   location: PropTypes.string,
   website: PropTypes.string,
   bio: PropTypes.string,
+  editable: PropTypes.bool,
 };
 
 ProfileHeader.defaultProps = {
@@ -79,6 +86,7 @@ ProfileHeader.defaultProps = {
   location: null,
   website: null,
   bio: null,
+  editable: false,
 };
 
 export default ProfileHeader;

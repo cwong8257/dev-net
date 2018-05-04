@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Spinner from '../common/Spinner';
-import ProfileActions from './ProfileActions';
 import Experience from './Experience';
 import Education from './Education';
 import { logoutUser } from '../../actions/authActions';
@@ -36,7 +35,7 @@ class Dashboard extends Component {
           <p className="lead text-muted">
             Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
           </p>
-          <ProfileActions />
+
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
           <div className="mb-5">

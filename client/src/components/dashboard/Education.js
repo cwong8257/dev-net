@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
+import DateRange from '../common/DateRange';
 import { deleteEducation } from '../../actions/profileActions';
 
 class Education extends Component {
@@ -20,11 +21,9 @@ class Education extends Component {
         <td>{school}</td>
         <td>{degree}</td>
         <td>
-          <Moment format="MMM DD, YYYY">{from}</Moment>
-          {' - '}
-          {to ? <Moment format="MMM DD, YYYY">{to}</Moment> : 'present'}
+          <DateRange from={from} to={to} />
         </td>
-        <td>
+        <td className="float-right">
           <button onClick={() => this.onDeleteClick(_id)} className="btn btn-danger">
             Delete
           </button>
@@ -34,18 +33,23 @@ class Education extends Component {
 
     return (
       <div>
-        <h4 className="mb-4">Education Credientials</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>School</th>
-              <th>Degree</th>
-              <th>Years</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>{education}</tbody>
-        </table>
+        <Link to="/add-education" className="btn btn-light float-right">
+          <i className="fas fa-plus text-info mr-1" /> Add Education
+        </Link>
+        <h4 className="mb-4">Education</h4>
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead className="thead-dark">
+              <tr>
+                <th>School</th>
+                <th>Degree</th>
+                <th>Years</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>{education}</tbody>
+          </table>
+        </div>
       </div>
     );
   }

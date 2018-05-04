@@ -6,7 +6,7 @@ import ProfileListItem from './ProfileListItem';
 const ProfileList = ({ title, items }) => {
   const list = items.map(data => <ProfileListItem {...data} />);
   const capitalizedTitle = title.charAt(0).toUpperCase() + title.toLowerCase().slice(1);
-
+  const lowercaseTitle = title.toLowerCase();
   return (
     <div className="card mb-3">
       <div className="card-body pb-0">
@@ -15,7 +15,7 @@ const ProfileList = ({ title, items }) => {
       {items.length > 0 ? (
         <ul className="list-group list-group-flush">{list}</ul>
       ) : (
-        <p className="text-muted font-italic text-center">{`No ${capitalizedTitle} Listed`}</p>
+        <p className="text-muted font-italic text-center">{`No ${lowercaseTitle} listed`}</p>
       )}
     </div>
   );

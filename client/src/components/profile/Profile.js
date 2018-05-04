@@ -25,9 +25,11 @@ class Profile extends Component {
       return <Spinner />;
     }
 
+    const editable = profile.user._id === this.props.auth.user.id;
+
     return (
       <div>
-        <ProfileHeader {...profile} />
+        <ProfileHeader editable={editable} {...profile} />
         <ProfileCreds education={profile.education} experience={profile.experience} />
         <ProfileSkills skills={profile.skills} />
         <ProfileGithub username={profile.githubUsername} count={5} sort="created: asc" />
@@ -45,9 +47,11 @@ Profile.propTypes = {
     }),
   }).isRequired,
   history: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = ({ profile }) => ({
+const mapStateToProps = ({ auth, profile }) => ({
+  auth,
   profile,
 });
 

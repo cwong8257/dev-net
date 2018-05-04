@@ -9,20 +9,26 @@ class ProfileGithub extends Component {
 
   componentDidMount = async () => {
     const { username, count, sort } = this.props;
+
+    if (!username) {
+      return this.setState(() => ({ repos: [] }));
+    }
+
     const clientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
     const clientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
 
     try {
       const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`);
       const repos = await response.json();
-      this.setState(() => ({ repos }));
+      return this.setState(() => ({ repos }));
     } catch (err) {
-      this.setState(() => ({ repos: [] }));
+      return this.setState(() => ({ repos: [] }));
     }
   };
 
   render() {
     const { repos } = this.state;
+    const { username } = this.props;
     const repoItems = repos.map(({
       id,
       html_url: htmlUrl,
@@ -52,7 +58,11 @@ class ProfileGithub extends Component {
         <div className="card-body">
           <h4 className="card-title text-info">Latest GitHub Repos</h4>
         </div>
-        <ul className="list-group list-group-flush">{repoItems}</ul>
+        {username ? (
+          <ul className="list-group list-group-flush">{repoItems}</ul>
+        ) : (
+          <p className="text-muted font-italic text-center">No repos found</p>
+        )}
       </div>
     );
   }

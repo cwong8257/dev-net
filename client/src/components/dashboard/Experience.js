@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
+import DateRange from '../common/DateRange';
 import { deleteExperience } from '../../actions/profileActions';
 
 class Experience extends Component {
@@ -20,11 +21,9 @@ class Experience extends Component {
         <td>{company}</td>
         <td>{title}</td>
         <td>
-          <Moment format="MMM DD, YYYY">{from}</Moment>
-          {' - '}
-          {to ? <Moment format="MMM DD, YYYY">{to}</Moment> : 'present'}
+          <DateRange from={from} to={to} />
         </td>
-        <td>
+        <td className="float-right">
           <button onClick={() => this.onDeleteClick(_id)} className="btn btn-danger">
             Delete
           </button>
@@ -34,18 +33,23 @@ class Experience extends Component {
 
     return (
       <div>
-        <h4 className="mb-4">Experience Credientials</h4>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Title</th>
-              <th>Years</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>{experience}</tbody>
-        </table>
+        <Link to="/add-experience" className="btn btn-light float-right">
+          <i className="fas fa-plus text-info mr-1" /> Add Experience
+        </Link>
+        <h4 className="mb-4">Experience</h4>
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead className="thead-dark">
+              <tr>
+                <th>Company</th>
+                <th>Title</th>
+                <th>Years</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>{experience}</tbody>
+          </table>
+        </div>
       </div>
     );
   }
