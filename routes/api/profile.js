@@ -281,9 +281,8 @@ router.delete(
 
     try {
       const profile = await Profile.findOne({ user: req.user.id });
-      const removeIndex = profile.experience.map(item => item.id).indexOf(req.params.experienceId);
 
-      profile.experience.splice(removeIndex, 1);
+      profile.experience = profile.experience.filter(experience => experience.id !== req.params.experienceId);
 
       const savedProfile = await profile.save();
 
@@ -306,9 +305,8 @@ router.delete(
 
     try {
       const profile = await Profile.findOne({ user: req.user.id });
-      const removeIndex = profile.education.map(item => item.id).indexOf(req.params.educationId);
 
-      profile.education.splice(removeIndex, 1);
+      profile.education = profile.education.filter(education => education.id !== req.params.educationId);
 
       const savedProfile = await profile.save();
 

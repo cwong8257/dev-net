@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import { loginUser } from '../../actions/authActions';
+import { clearErrors } from '../../actions/errorActions';
 
 class Login extends Component {
   static getDerivedStateFromProps = ({ errors }) => ({ errors });
@@ -12,6 +13,10 @@ class Login extends Component {
     email: '',
     password: '',
     errors: '',
+  };
+
+  componentDidMount = () => {
+    this.props.clearErrors();
   };
 
   onChange = (e) => {
@@ -65,12 +70,13 @@ class Login extends Component {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ errors }) => ({
   errors,
 });
 
-const mapDispatchToProps = { loginUser };
+const mapDispatchToProps = { loginUser, clearErrors };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

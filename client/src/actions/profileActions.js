@@ -1,11 +1,12 @@
 import axios from 'axios';
 import qs from 'qs';
 
+import { clearErrors, getErrors } from './errorActions';
+
 import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_ERRORS,
   SET_CURRENT_USER,
   GET_PROFILES,
 } from './types';
@@ -23,14 +24,13 @@ export const createProfile = (profileData, history) => async (dispatch) => {
     await axios.post('/api/profile', qs.stringify(profileData));
     history.push('/dashboard');
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
 export const getCurrentProfile = () => async (dispatch) => {
+  dispatch(clearErrors());
+
   try {
     dispatch(setProfileLoading());
     const response = await axios.get('/api/profile');
@@ -83,10 +83,7 @@ export const addExperience = (experienceData, history) => async (dispatch) => {
     await axios.post('/api/profile/experience', qs.stringify(experienceData));
     history.push('/dashboard');
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -95,10 +92,7 @@ export const addEducation = (educationData, history) => async (dispatch) => {
     await axios.post('/api/profile/education', qs.stringify(educationData));
     history.push('/dashboard');
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -110,10 +104,7 @@ export const deleteExperience = experienceId => async (dispatch) => {
       payload: response.data,
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -125,10 +116,7 @@ export const deleteEducation = educationId => async (dispatch) => {
       payload: response.data,
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -140,9 +128,6 @@ export const deleteAccount = () => async (dispatch) => {
       payload: {},
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };

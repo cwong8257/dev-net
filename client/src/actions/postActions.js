@@ -1,22 +1,12 @@
 import axios from 'axios';
 import qs from 'qs';
 
-import {
-  GET_POST,
-  ADD_POST,
-  POST_LOADING,
-  GET_POSTS,
-  DELETE_POST,
-  GET_ERRORS,
-  CLEAR_ERRORS,
-} from './types';
+import { clearErrors, getErrors } from './errorActions';
+
+import { GET_POST, ADD_POST, POST_LOADING, GET_POSTS, DELETE_POST } from './types';
 
 export const setPostLoading = () => ({
   type: POST_LOADING,
-});
-
-export const clearErrors = () => ({
-  type: CLEAR_ERRORS,
 });
 
 export const getPost = postId => async (dispatch) => {
@@ -49,10 +39,7 @@ export const addPost = postData => async (dispatch) => {
       payload: response.data,
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -65,15 +52,13 @@ export const deletePost = id => async (dispatch) => {
       payload: id,
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
 export const getPosts = () => async (dispatch) => {
   dispatch(setPostLoading());
+  dispatch(clearErrors());
 
   try {
     const response = await axios.get('/api/posts');
@@ -96,10 +81,7 @@ export const addLike = postId => async (dispatch) => {
 
     dispatch(getPosts());
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -109,10 +91,7 @@ export const removeLike = postId => async (dispatch) => {
 
     dispatch(getPosts());
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -126,10 +105,7 @@ export const addComment = (postId, commentData) => async (dispatch) => {
       payload: response.data,
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };
 
@@ -142,9 +118,6 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
       payload: response.data,
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(getErrors(err.response.data));
   }
 };

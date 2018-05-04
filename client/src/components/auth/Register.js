@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import { registerUser } from '../../actions/authActions';
+import { clearErrors } from '../../actions/errorActions';
 
 class Register extends Component {
   static getDerivedStateFromProps = ({ errors }) => ({ errors });
@@ -15,6 +16,10 @@ class Register extends Component {
     password: '',
     confirm: '',
     errors: '',
+  };
+
+  componentDidMount = () => {
+    this.props.clearErrors();
   };
 
   onChange = (e) => {
@@ -93,6 +98,7 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ auth, errors }) => ({
@@ -100,6 +106,6 @@ const mapStateToProps = ({ auth, errors }) => ({
   errors,
 });
 
-const mapDispatchToProps = { registerUser };
+const mapDispatchToProps = { registerUser, clearErrors };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));

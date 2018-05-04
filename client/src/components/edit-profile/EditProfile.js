@@ -216,10 +216,10 @@ class CreateProfile extends Component {
                 />
                 <TextFieldGroup
                   placeholder="Github Username"
-                  name="githubusername"
+                  name="githubUsername"
                   value={this.state.githubUsername}
                   onChange={this.onChange}
-                  error={errors.githubusername}
+                  error={errors.githubUsername}
                   info="If you want your latest repos and a Github link, include your username"
                 />
                 <TextAreaFieldGroup
