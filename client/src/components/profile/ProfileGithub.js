@@ -7,7 +7,11 @@ class ProfileGithub extends Component {
     repos: [],
   };
 
-  componentDidMount = async () => {
+  componentDidMount() {
+    this.getRepos();
+  }
+
+  getRepos = async () => {
     const { username, count, sort } = this.props;
 
     if (!username) {
@@ -69,7 +73,15 @@ class ProfileGithub extends Component {
 }
 
 ProfileGithub.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
+  count: PropTypes.number,
+  sort: PropTypes.string,
+};
+
+ProfileGithub.defaultProps = {
+  username: null,
+  count: 5,
+  sort: 'created: asc',
 };
 
 export default ProfileGithub;

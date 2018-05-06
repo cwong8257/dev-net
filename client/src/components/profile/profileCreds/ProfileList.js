@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ProfileListItem from './ProfileListItem';
 
 const ProfileList = ({ title, items }) => {
-  const list = items.map(data => <ProfileListItem {...data} />);
+  const list = items.map(data => <ProfileListItem key={data.id} {...data} />);
   const capitalizedTitle = title.charAt(0).toUpperCase() + title.toLowerCase().slice(1);
   const lowercaseTitle = title.toLowerCase();
   return (

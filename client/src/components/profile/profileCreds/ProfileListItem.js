@@ -6,7 +6,11 @@ import DateRange from '../../common/DateRange';
 const ProfileListItem = ({
   id, primary, secondary, from, to, rest,
 }) => {
-  const restItems = rest.map(item => <p className="mt-2">{item}</p>);
+  const restItems = rest.map(item => (
+    <p key={item} className="mt-2">
+      {item}
+    </p>
+  ));
   return (
     <li key={id} className="list-group-item">
       <h5>{primary}</h5>

@@ -32,24 +32,28 @@ class Education extends Component {
     ));
 
     return (
-      <div>
+      <div className="mb-4">
         <Link to="/add-education" className="btn btn-light float-right">
           <i className="fas fa-plus text-info mr-1" /> Add Education
         </Link>
         <h4 className="mb-4">Education</h4>
-        <div className="table-responsive">
-          <table className="table table-striped">
-            <thead className="thead-dark">
-              <tr>
-                <th>School</th>
-                <th>Degree</th>
-                <th>Years</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>{education}</tbody>
-          </table>
-        </div>
+        {education.length > 0 ? (
+          <div className="table-responsive">
+            <table className="table table-striped">
+              <thead className="thead-dark">
+                <tr>
+                  <th>School</th>
+                  <th>Degree</th>
+                  <th>Years</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>{education}</tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="text-center text-muted font-italic">No experience listed</p>
+        )}
       </div>
     );
   }

@@ -7,6 +7,7 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
+  PROFILE_NOT_LOADING,
   SET_CURRENT_USER,
   GET_PROFILES,
 } from './types';
@@ -17,6 +18,10 @@ export const clearCurrentProfile = () => ({
 
 export const setProfileLoading = () => ({
   type: PROFILE_LOADING,
+});
+
+export const clearProfileLoading = () => ({
+  type: PROFILE_NOT_LOADING,
 });
 
 export const createProfile = (profileData, history) => async (dispatch) => {

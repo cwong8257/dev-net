@@ -32,24 +32,28 @@ class Experience extends Component {
     ));
 
     return (
-      <div>
+      <div className="mb-4">
         <Link to="/add-experience" className="btn btn-light float-right">
           <i className="fas fa-plus text-info mr-1" /> Add Experience
         </Link>
         <h4 className="mb-4">Experience</h4>
-        <div className="table-responsive">
-          <table className="table table-striped">
-            <thead className="thead-dark">
-              <tr>
-                <th>Company</th>
-                <th>Title</th>
-                <th>Years</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>{experience}</tbody>
-          </table>
-        </div>
+        {experience.length > 0 ? (
+          <div className="table-responsive">
+            <table className="table table-striped">
+              <thead className="thead-dark">
+                <tr>
+                  <th>Company</th>
+                  <th>Title</th>
+                  <th>Years</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>{experience}</tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="text-center text-muted font-italic">No experience listed</p>
+        )}
       </div>
     );
   }

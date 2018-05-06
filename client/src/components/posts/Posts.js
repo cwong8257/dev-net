@@ -9,7 +9,11 @@ import { getPosts } from '../../actions/postActions';
 import { getCurrentProfile } from '../../actions/profileActions';
 
 class Posts extends Component {
-  componentDidMount = () => {
+  componentDidMount() {
+    this.loadAllData();
+  }
+
+  loadAllData = () => {
     this.props.getPosts();
     this.props.getCurrentProfile();
   };
