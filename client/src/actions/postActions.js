@@ -79,6 +79,7 @@ export const addLike = postId => async (dispatch) => {
   try {
     await axios.post(`/api/posts/${postId}/like`);
 
+    dispatch(getPost(postId));
     dispatch(getPosts());
   } catch (err) {
     dispatch(getErrors(err.response.data));
@@ -89,6 +90,7 @@ export const removeLike = postId => async (dispatch) => {
   try {
     await axios.post(`/api/posts/${postId}/unlike`);
 
+    dispatch(getPost(postId));
     dispatch(getPosts());
   } catch (err) {
     dispatch(getErrors(err.response.data));

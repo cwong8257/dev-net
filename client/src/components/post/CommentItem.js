@@ -1,43 +1,60 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
+
 import { deleteComment } from '../../actions/postActions';
 
 class CommentItem extends Component {
-  state = {};
-
-  onDeleteClick(postId, commentId) {
-    this.props.deleteComment(postId, commentId);
-  }
+  handleDeleteClick = () => {
+    const { postId, _id } = this.props;
+    this.props.deleteComment(postId, _id);
+  };
 
   render() {
     const {
-      _id: commentId, avatar, name, text, user, postId, auth,
+      auth, avatar, name, text, user, date,
     } = this.props;
+    const time = moment(date).fromNow();
 
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <a href="profile.html">
-              <img className="rounded-circle d-none d-md-block" src={avatar} alt={name} />
-            </a>
-            <br />
-            <p className="text-center">{name}</p>
-          </div>
-          <div className="col-md-10">
-            <p className="lead">{text}</p>
-            {user === auth.user.id && (
-              <button
-                type="button"
-                onClick={e => this.onDeleteClick(postId, commentId)}
-                className="btn btn-danger mr-1"
-              >
-                <i className="fas fa-times" />
-              </button>
-            )}
+      <div className="card my-4">
+        <div className="card-body pb-0">
+          <div className="row">
+            <div className="col-12 mb-3">
+              <Link className="mr-3" to={`/profile/user/${user}`}>
+                <img
+                  className="rounded-circle float-left"
+                  src={avatar}
+                  alt={name}
+                  height={64}
+                  width={64}
+                />
+              </Link>
+              <div className="d-inline-block">
+                <h5>{name}</h5>
+                <p className="small text-muted">{time}</p>
+              </div>
+            </div>
+            <div className="col-12 mb-3">
+              <p>{text}</p>
+            </div>
           </div>
         </div>
+        {user === auth.user.id && (
+          <div className="card-footer">
+            <button
+              type="button"
+              onClick={this.handleDeleteClick}
+              className="btn btn-sm btn-light mr-1"
+            >
+              <span className="text-danger">
+                <i className="fas fa-trash-alt" /> Delete
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     );
   }
@@ -52,6 +69,7 @@ CommentItem.propTypes = {
   user: PropTypes.string.isRequired,
   postId: PropTypes.string.isRequired,
   auth: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ auth }) => ({ auth });

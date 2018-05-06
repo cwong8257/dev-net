@@ -7,14 +7,17 @@ import ProfileCreds from './profileCreds/ProfileCreds';
 import ProfileGithub from './ProfileGithub';
 import ProfileHeader from './ProfileHeader';
 import Spinner from '../common/Spinner';
-import { getProfileByHandle } from '../../actions/profileActions';
+import { getProfileByHandle, getProfileById } from '../../actions/profileActions';
 
 class Profile extends Component {
   componentDidMount = () => {
-    const { handle } = this.props.match.params;
+    const { handle, userId } = this.props.match.params;
 
     if (handle) {
       this.props.getProfileByHandle(handle);
+    }
+    if (userId) {
+      this.props.getProfileById(userId);
     }
   };
 
@@ -40,6 +43,7 @@ class Profile extends Component {
 
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
+  getProfileById: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -57,6 +61,7 @@ const mapStateToProps = ({ auth, profile }) => ({
 
 const mapDispatchToProps = {
   getProfileByHandle,
+  getProfileById,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

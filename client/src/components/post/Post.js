@@ -10,40 +10,24 @@ import Spinner from '../common/Spinner';
 import { getPost } from '../../actions/postActions';
 
 class Post extends Component {
-  state = {};
-
   componentDidMount = () => {
     this.props.getPost(this.props.match.params.postId);
   };
 
   render() {
     const { post, loading } = this.props.post;
-    let postContent;
 
     if (post === null || loading || Object.keys(post).length === 0) {
-      postContent = <Spinner />;
-    } else {
-      postContent = (
-        <div>
-          <PostItem {...post} showActions={false} />
-          <CommentForm postId={post._id} />
-          <CommentFeed postId={post._id} comments={post.comments} />
-        </div>
-      );
+      return <Spinner />;
     }
-
     return (
-      <div className="post">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <Link to="/feed" className="btn btn-light mb-3">
-                Back To feed
-              </Link>
-              {postContent}
-            </div>
-          </div>
-        </div>
+      <div>
+        <Link to="/feed" className="btn btn-light mb-3">
+          Back To feed
+        </Link>
+        <PostItem {...post} showCommentButton={false} />
+        <CommentForm postId={post._id} />
+        <CommentFeed postId={post._id} comments={post.comments} />
       </div>
     );
   }

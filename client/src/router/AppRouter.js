@@ -31,6 +31,7 @@ const AppRouter = () => (
       <div className="container">
         <Route exact path="/profiles" component={Profiles} />
         <Route exact path="/profile/:handle" component={Profile} />
+        <Route exact path="/profile/user/:userId" component={Profile} />
         <Switch>
           <PublicRoute exact path="/register" component={Register} />
         </Switch>
