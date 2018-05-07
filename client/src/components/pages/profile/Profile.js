@@ -3,22 +3,23 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
+import Github from '../../services/Github';
 import ProfileSkills from './ProfileSkills';
-import ProfileCreds from './profileCreds/ProfileCreds';
+import ProfileCreds from './profileCreds/';
 import ProfileGithub from './ProfileGithub';
 import ProfileHeader from './ProfileHeader';
-import Spinner from '../common/Spinner';
+import Spinner from '../../common/Spinner';
 import {
   getProfileByHandle,
   getProfileById,
   clearProfileLoading,
-} from '../../actions/profileActions';
+} from '../../../actions/profileActions';
 
 class Profile extends Component {
   state = { loading: true };
 
-  componentDidMount() {
-    this.getProfile();
+  async componentDidMount() {
+    await this.getProfile();
   }
 
   getProfile = async () => {
@@ -29,6 +30,7 @@ class Profile extends Component {
     } else if (userId) {
       await this.props.getProfileById(userId);
     }
+
     this.setState(() => ({ loading: false }));
   };
 
@@ -49,7 +51,7 @@ class Profile extends Component {
         <ProfileHeader editable={editable} {...profile} />
         <ProfileCreds education={profile.education} experience={profile.experience} />
         <ProfileSkills skills={profile.skills} />
-        <ProfileGithub username={profile.githubUsername} />
+        <Github Render={ProfileGithub} />
       </div>
     );
   }

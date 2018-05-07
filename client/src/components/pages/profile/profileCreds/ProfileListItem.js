@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DateRange from '../../common/DateRange';
+import DateRange from '../../../common/DateRange';
 
 const ProfileListItem = ({
   id, primary, secondary, from, to, rest,
