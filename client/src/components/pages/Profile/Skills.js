@@ -9,7 +9,7 @@ const ProfileSkills = ({ skills }) => {
   ));
 
   return (
-    <div className="card bg-light shadow mb-4">
+    <div className="card bg-light shadow-sm mb-4">
       <div className="card-header h4 text-info">Skills</div>
       <div className="card-body">
         <div className="d-flex flex-wrap flex-lg-column">{skillsList}</div>

@@ -10,14 +10,14 @@ const ProfileItem = ({
   } = social;
   const { avatar, name } = user;
   const skillsList = skills.slice(0, 4).map(skill => (
-    <li key={skill} className="list-group-item bg-light">
+    <li key={skill} className="list-group-item bg-light px-0">
       <i className="fa fa-check mr-2" />
       {skill}
     </li>
   ));
 
   return (
-    <div className="card bg-light text-center text-md-left shadow mb-4">
+    <div className="card bg-light text-center text-md-left shadow-sm mb-4">
       <div className="card-body">
         <div className="row">
           <div className="col-12 col-md-4 col-lg-3">

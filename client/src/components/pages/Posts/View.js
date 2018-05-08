@@ -10,7 +10,7 @@ const View = ({
   <div className="container">
     <div className="row">
       <div className="col-md-3 d-none d-md-block">
-        <div className="card shadow">
+        <div className="card shadow-sm">
           <img src={avatar} alt={name} className="card-img-top" />
           <div className="card-body">
             <h5 className="card-title">{name}</h5>

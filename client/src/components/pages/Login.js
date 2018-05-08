@@ -17,6 +17,7 @@ class Login extends Component {
   };
 
   componentDidMount = () => {
+    document.title = 'Sign in to DevConnector | DevConnector';
     this.props.clearErrors();
   };
 

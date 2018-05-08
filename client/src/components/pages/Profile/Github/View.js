@@ -11,23 +11,23 @@ const View = ({ repos }) => {
     watchers_count: watchersCount,
     forks_count: forksCount,
   }) => (
-    <li key={id} className="list-group-item bg-light d-flex flex-column align-items-start">
-      <h4 className="order-lg-1">
-        <a href={htmlUrl} target="_blank">
-          {name}
-        </a>
-      </h4>
-      <p className="text-muted order-lg-2">{description}</p>
-      <div className="order-lg-0 d-inline float-right">
+    <li key={id} className="list-group-item bg-light px-0 d-flex flex-column d-lg-block">
+      <div className="order-2 order-lg-0 d-inline float-right">
         <span className="badge badge-secondary mr-1">Watchers: {watchersCount}</span>
         <span className="badge badge-info mr-1">Stars: {stargazersCount}</span>
         <span className="badge badge-success">Forks: {forksCount}</span>
       </div>
+      <h4 className="order-0 order-lg-1">
+        <a href={htmlUrl} target="_blank">
+          {name}
+        </a>
+      </h4>
+      <p className="text-muted order-1 order-lg-2">{description}</p>
     </li>
   ));
 
   return (
-    <div className="card bg-light shadow mb-4">
+    <div className="card bg-light shadow-sm mb-4">
       <div className="card-header h4 text-info">Latest GitHub Repos</div>
       <div className="card-body">
         {repos.length > 0 ? (

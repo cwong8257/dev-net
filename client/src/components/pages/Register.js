@@ -18,6 +18,7 @@ class Register extends Component {
   };
 
   componentDidMount = () => {
+    document.title = 'Join DevConnector | DevConnector';
     this.props.clearErrors();
   };
 

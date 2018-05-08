@@ -18,6 +18,8 @@ class Profiles extends Component {
   state = { loading: true };
 
   async componentDidMount() {
+    document.title = 'Profiles | DevConnector';
+
     try {
       await this.props.getProfiles();
       this.setState((prevState, props) => ({

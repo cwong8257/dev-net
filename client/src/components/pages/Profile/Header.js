@@ -11,7 +11,7 @@ const ProfileHeader = ({
   const { avatar, name } = user;
 
   return (
-    <div className="card bg-light text-center text-md-left shadow mb-4">
+    <div className="card bg-light text-center text-md-left shadow-sm mb-4">
       <div className="card-body">
         <div className="row">
           <div className="col-12 col-md-4 col-lg-3 d-inline-flex flex-column align-items-center">

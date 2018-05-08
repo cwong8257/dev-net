@@ -8,7 +8,7 @@ const ProfileList = ({ title, items }) => {
   const capitalizedTitle = title.charAt(0).toUpperCase() + title.toLowerCase().slice(1);
   const lowercaseTitle = title.toLowerCase();
   return (
-    <div className="card bg-light shadow mb-4">
+    <div className="card bg-light shadow-sm mb-4">
       <div className="card-header h4 text-info">{capitalizedTitle}</div>
       <div className="card-body">
         {items.length > 0 ? (

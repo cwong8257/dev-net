@@ -31,6 +31,8 @@ class Profile extends Component {
 
   async componentDidMount() {
     await this.getProfile();
+    const { handle, user } = this.props.profile;
+    document.title = `${handle} (${user.name}) | DevConnector`;
   }
 
   getProfile = async () => {

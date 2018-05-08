@@ -45,7 +45,7 @@ class PostItem extends Component {
     const liked = this.findUserLike(likes);
 
     return (
-      <div className="card shadow mb-4">
+      <div className="card shadow-sm mb-4">
         <div className="card-body pb-0">
           <div className="row">
             <div className="col-12 mb-3">

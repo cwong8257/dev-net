@@ -19,7 +19,7 @@ class CommentItem extends Component {
     const time = moment(date).fromNow();
 
     return (
-      <div className="card shadow mb-4">
+      <div className="card shadow-sm mb-4">
         <div className="card-body">
           <div className="row">
             <div className="col-12 mb-3">

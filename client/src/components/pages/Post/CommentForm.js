@@ -36,7 +36,7 @@ class CommentForm extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="card shadow mb-4">
+      <div className="card shadow-sm mb-4">
         <div className="card-header h5 bg-info text-white">Add a comment</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
