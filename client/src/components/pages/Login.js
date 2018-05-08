@@ -17,7 +17,7 @@ class Login extends Component {
   };
 
   componentDidMount = () => {
-    document.title = 'Sign in to DevConnector | DevConnector';
+    document.title = 'Sign in to DevNet | DevNet';
     this.props.clearErrors();
   };
 
@@ -39,7 +39,7 @@ class Login extends Component {
     return (
       <div className="container">
         <h1 className="display-4 text-center">Sign in</h1>
-        <p className="text-center mb-4">Sign in to DevConnector</p>
+        <p className="text-center mb-4">Sign in to DevNet</p>
         <div className="row">
           <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div className="row mb-4">
@@ -75,7 +75,7 @@ class Login extends Component {
               <div className="col-12">
                 <div className="card">
                   <div className="card-body">
-                    New to DevConnector? <Link to="/register">Create an account</Link>.
+                    New to DevNet? <Link to="/register">Create an account</Link>.
                   </div>
                 </div>
               </div>

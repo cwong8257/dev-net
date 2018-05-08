@@ -10,7 +10,7 @@ class Dashboard extends Component {
   state = { loading: true };
 
   async componentDidMount() {
-    document.title = 'Dashboard | DevConnector';
+    document.title = 'Dashboard | DevNet';
     await this.props.getCurrentProfile();
     this.setState({ loading: false });
   }

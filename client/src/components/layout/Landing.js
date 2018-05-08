@@ -5,7 +5,7 @@ const Landing = () => (
   <div className="landing">
     <div className="dark-overlay">
       <div className="landing-header">
-        <h1 className="display-4 mb-3">Developer Connector</h1>
+        <h1 className="display-4 mb-3">DevNet</h1>
         <p className="mb-3">
           Create a developer profile/portfolio, share posts and get help from other developers
         </p>

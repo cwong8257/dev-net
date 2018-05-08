@@ -9,7 +9,7 @@ import { getCurrentProfile } from '../../../actions/profileActions';
 
 class Posts extends Component {
   componentDidMount() {
-    document.title = 'Post Feed | DevConnector';
+    document.title = 'Post Feed | DevNet';
     this.loadAllData();
   }
 

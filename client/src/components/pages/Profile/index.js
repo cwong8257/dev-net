@@ -32,7 +32,7 @@ class Profile extends Component {
   async componentDidMount() {
     await this.getProfile();
     const { handle, user } = this.props.profile;
-    document.title = `${handle} (${user.name}) | DevConnector`;
+    document.title = `${handle} (${user.name}) | DevNet`;
   }
 
   getProfile = async () => {

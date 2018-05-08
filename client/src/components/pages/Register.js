@@ -18,7 +18,7 @@ class Register extends Component {
   };
 
   componentDidMount = () => {
-    document.title = 'Join DevConnector | DevConnector';
+    document.title = 'Join DevNet | DevNet';
     this.props.clearErrors();
   };
 
@@ -50,7 +50,7 @@ class Register extends Component {
           <h1 className="display-4 text-center">Sign up</h1>
           <div className="row">
             <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-              <p className="lead text-center">Create your DevConnector account</p>
+              <p className="lead text-center">Create your DevNet account</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   label="Name"

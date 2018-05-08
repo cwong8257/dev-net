@@ -18,7 +18,7 @@ class Profiles extends Component {
   state = { loading: true };
 
   async componentDidMount() {
-    document.title = 'Profiles | DevConnector';
+    document.title = 'Profiles | DevNet';
 
     try {
       await this.props.getProfiles();

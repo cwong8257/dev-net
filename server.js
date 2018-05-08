@@ -13,7 +13,7 @@ const configurePassport = require('./config/passport');
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/devconnector');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/devnet');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
