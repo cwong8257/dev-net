@@ -51,9 +51,13 @@ const View = ({
 
 View.propTypes = {
   onDeleteClick: PropTypes.func.isRequired,
-  user: PropTypes.string.isRequired,
-  profile: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  profile: PropTypes.object,
   loading: PropTypes.bool.isRequired,
+};
+
+View.defaultProps = {
+  profile: null,
 };
 
 export default View;

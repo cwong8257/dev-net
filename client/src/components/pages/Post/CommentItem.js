@@ -19,8 +19,8 @@ class CommentItem extends Component {
     const time = moment(date).fromNow();
 
     return (
-      <div className="card my-4">
-        <div className="card-body pb-0">
+      <div className="card shadow mb-4">
+        <div className="card-body">
           <div className="row">
             <div className="col-12 mb-3">
               <Link className="mr-3" to={`/profile/user/${user}`}>
@@ -37,9 +37,7 @@ class CommentItem extends Component {
                 <p className="small text-muted">{time}</p>
               </div>
             </div>
-            <div className="col-12 mb-3">
-              <p>{text}</p>
-            </div>
+            <div className="col-12 mb-3">{text}</div>
           </div>
         </div>
         {user === auth.user.id && (
@@ -47,11 +45,9 @@ class CommentItem extends Component {
             <button
               type="button"
               onClick={this.handleDeleteClick}
-              className="btn btn-sm btn-light mr-1"
+              className="btn btn-sm btn-light mr-2"
             >
-              <span className="text-danger">
-                <i className="fas fa-trash-alt" /> Delete
-              </span>
+              <i className="fas fa-trash-alt text-danger mr-2" />Delete
             </button>
           </div>
         )}

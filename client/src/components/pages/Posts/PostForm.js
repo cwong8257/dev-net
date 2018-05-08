@@ -35,8 +35,8 @@ class PostFrom extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="card mb-3">
-        <div className="card-header bg-info text-white">Say Something...</div>
+      <div className="card shadow mb-4">
+        <div className="card-header h5 bg-info text-white">Share something...</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
@@ -48,8 +48,8 @@ class PostFrom extends Component {
                 error={errors.text}
               />
             </div>
-            <button type="submit" className="btn btn-dark">
-              Submit
+            <button type="submit" className="btn btn-dark float-right">
+              Post
             </button>
           </form>
         </div>

@@ -12,7 +12,7 @@ const CredentialListItem = ({
     </p>
   ));
   return (
-    <li key={id} className="list-group-item">
+    <li key={id} className="list-group-item bg-light">
       <h5>{primary}</h5>
       <span>{secondary}</span>
       <DateRange className="text-muted " from={from} to={to} />

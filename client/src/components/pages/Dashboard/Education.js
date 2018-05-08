@@ -20,7 +20,7 @@ class Education extends Component {
       <tr key={_id}>
         <td>{school}</td>
         <td>{degree}</td>
-        <td>
+        <td className="d-none d-md-table-cell">
           <DateRange from={from} to={to} />
         </td>
         <td className="float-right">
@@ -35,7 +35,7 @@ class Education extends Component {
     return (
       <div className="mb-4">
         <Link to="/add-education" className="btn btn-light float-right">
-          <i className="fas fa-plus text-info mr-1" /> Add Education
+          <i className="fas fa-plus text-info mr-2" />Add Education
         </Link>
         <h4 className="mb-4">Education</h4>
         {education.length > 0 ? (
@@ -45,7 +45,7 @@ class Education extends Component {
                 <tr>
                   <th>School</th>
                   <th>Degree</th>
-                  <th>Years</th>
+                  <th className="d-none d-md-table-cell">Years</th>
                   <th />
                 </tr>
               </thead>

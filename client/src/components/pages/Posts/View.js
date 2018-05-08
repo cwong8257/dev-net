@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import PostForm from './PostForm';
 import PostFeed from './PostFeed';
 
@@ -7,13 +9,13 @@ const View = ({
 }) => (
   <div className="container">
     <div className="row">
-      <div className="d-none d-md-block col-md-3">
-        <div className="card border-0">
+      <div className="col-md-3 d-none d-md-block">
+        <div className="card shadow">
           <img src={avatar} alt={name} className="card-img-top" />
-          <div className="card-body px-0">
-            <h4 className="card-title">{name}</h4>
-            <h5 className="card-subtitle text-muted mb-3">{handle}</h5>
-            <p className="card-text">{bio}</p>
+          <div className="card-body">
+            <h5 className="card-title">{name}</h5>
+            <h6 className="card-subtitle text-muted mb-3">{handle}</h6>
+            <p className="card-text small">{bio}</p>
           </div>
         </div>
       </div>
@@ -24,5 +26,17 @@ const View = ({
     </div>
   </div>
 );
+
+View.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  handle: PropTypes.string.isRequired,
+  posts: PropTypes.array.isRequired,
+  bio: PropTypes.string,
+};
+
+View.defaultProps = {
+  bio: null,
+};
 
 export default View;

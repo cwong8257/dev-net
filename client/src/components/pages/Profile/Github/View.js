@@ -11,31 +11,31 @@ const View = ({ repos }) => {
     watchers_count: watchersCount,
     forks_count: forksCount,
   }) => (
-    <li key={id} className="list-group-item">
-      <div className="float-right d-none d-sm-inline">
-        <span className="badge badge-secondary mr-1">Watchers: {watchersCount}</span>
-        <span className="badge badge-info mr-1">Stars: {stargazersCount}</span>
-        <span className="badge badge-success">Forks: {forksCount}</span>
-      </div>
-      <h4>
+    <li key={id} className="list-group-item bg-light d-flex flex-column align-items-start">
+      <h4 className="order-lg-1">
         <a href={htmlUrl} target="_blank">
           {name}
         </a>
       </h4>
-      <p className="text-muted">{description}</p>
+      <p className="text-muted order-lg-2">{description}</p>
+      <div className="order-lg-0 d-inline float-right">
+        <span className="badge badge-secondary mr-1">Watchers: {watchersCount}</span>
+        <span className="badge badge-info mr-1">Stars: {stargazersCount}</span>
+        <span className="badge badge-success">Forks: {forksCount}</span>
+      </div>
     </li>
   ));
 
   return (
-    <div className="card mb-3">
+    <div className="card bg-light shadow mb-4">
+      <div className="card-header h4 text-info">Latest GitHub Repos</div>
       <div className="card-body">
-        <h4 className="card-title text-info">Latest GitHub Repos</h4>
+        {repos.length > 0 ? (
+          <ul className="list-group list-group-flush">{repoItems}</ul>
+        ) : (
+          <p className="text-muted font-italic text-center">No repos found</p>
+        )}
       </div>
-      {repos.length > 0 ? (
-        <ul className="list-group list-group-flush">{repoItems}</ul>
-      ) : (
-        <p className="text-muted font-italic text-center">No repos found</p>
-      )}
     </div>
   );
 };

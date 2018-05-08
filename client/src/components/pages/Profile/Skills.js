@@ -9,10 +9,10 @@ const ProfileSkills = ({ skills }) => {
   ));
 
   return (
-    <div className="card mb-3">
+    <div className="card bg-light shadow mb-4">
+      <div className="card-header h4 text-info">Skills</div>
       <div className="card-body">
-        <h4 className="card-title text-info">Skill Set</h4>
-        <div className="d-flex flex-wrap">{skillsList}</div>
+        <div className="d-flex flex-wrap flex-lg-column">{skillsList}</div>
       </div>
     </div>
   );

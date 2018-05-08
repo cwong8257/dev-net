@@ -11,18 +11,18 @@ const ProfileHeader = ({
   const { avatar, name } = user;
 
   return (
-    <div className="card mb-3">
+    <div className="card bg-light text-center text-md-left shadow mb-4">
       <div className="card-body">
-        {editable && (
-          <Link to="/edit-profile" className="btn btn-light float-right">
-            <i className="fas fa-user-circle text-info mr-1" /> Edit Profile
-          </Link>
-        )}
         <div className="row">
-          <div className="col-12 col-sm-3">
-            <img className="rounded-circle img-thumbnail" src={avatar} alt={name} />
+          <div className="col-12 col-md-4 col-lg-3 d-inline-flex flex-column align-items-center">
+            <img className="img-fluid rounded-circle mb-3" src={avatar} alt={name} />
+            {editable && (
+              <Link to="/edit-profile" className="btn btn-info mb-3">
+                <i className="fas fa-edit mr-2" />Edit Profile
+              </Link>
+            )}
           </div>
-          <div className="col-12 col-sm-9">
+          <div className="col-12 col-md-8 col-lg-9">
             <h2>{name}</h2>
             <p>
               {status} {company && <span> at {company}</span>}

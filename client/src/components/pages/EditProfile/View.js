@@ -94,13 +94,12 @@ const View = ({
     <div className="container">
       <div className="row">
         <div className="col-12 col-md-10 col-lg-8 mx-auto">
-          <h1 className="text-center">Edit profile</h1>
+          <h1 className="text-center mb-4">Edit profile</h1>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Handle"
-                  placeholder="Handle"
                   name="handle"
                   value={handle}
                   onChange={handleChangeInput}
@@ -111,12 +110,11 @@ const View = ({
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Location"
-                  placeholder="Location"
+                  placeholder="Ex: New York, NY"
                   name="location"
                   value={location}
                   onChange={handleChangeInput}
                   error={errors.location}
-                  info="City & state (eg. Boston, MA)"
                   optional
                 />
               </div>
@@ -134,8 +132,9 @@ const View = ({
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Company"
-                  placeholder="Company"
+                  placeholder="Ex: Microsoft"
                   name="company"
+                  autoComplete="organization"
                   value={company}
                   onChange={handleChangeInput}
                   error={errors.company}
@@ -146,19 +145,17 @@ const View = ({
               <div className="col-12">
                 <TextFieldGroup
                   label="Skills"
-                  placeholder="Skills"
+                  placeholder="Ex: HTML, CSS, JavaScript, PHP"
                   name="skills"
                   value={skills}
                   onChange={handleChangeInput}
                   error={errors.skills}
-                  info="Please use comma separated values (eg.
-                  HTML, CSS, JavaScript, PHP)"
+                  info="Please use comma separated values"
                 />
               </div>
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="GitHub username"
-                  placeholder="GitHub username"
                   name="githubUsername"
                   value={githubUsername}
                   onChange={handleChangeInput}
@@ -170,7 +167,6 @@ const View = ({
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Website"
-                  placeholder="Website"
                   name="website"
                   value={website}
                   onChange={handleChangeInput}
@@ -182,7 +178,6 @@ const View = ({
               <div className="col">
                 <TextAreaFieldGroup
                   label="About me"
-                  placeholder="About me"
                   name="bio"
                   value={bio}
                   onChange={handleChangeInput}
@@ -200,7 +195,7 @@ const View = ({
               <span className="text-muted">Optional</span>
             </div>
             {socialInputs}
-            <button className="btn btn-info mt-4">Save changes</button>
+            <button className="btn btn-info mt-4">Edit profile</button>
           </form>
         </div>
       </div>

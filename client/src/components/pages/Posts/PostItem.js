@@ -45,7 +45,7 @@ class PostItem extends Component {
     const liked = this.findUserLike(likes);
 
     return (
-      <div className="card my-4">
+      <div className="card shadow mb-4">
         <div className="card-body pb-0">
           <div className="row">
             <div className="col-12 mb-3">
@@ -75,29 +75,28 @@ class PostItem extends Component {
           <button
             type="button"
             onClick={this.handleLikeClick}
-            className="btn btn-sm btn-light mr-1"
+            className="btn btn-sm btn-light mr-2"
           >
             <i
-              className={classnames('fas fa-thumbs-up', {
+              className={classnames('fas fa-thumbs-up mr-2', {
                 'text-info': liked,
               })}
             />
-            <span className="ml-2">{liked ? 'Liked' : 'Like'}</span>
+            {liked ? 'Liked' : 'Like'}
           </button>
           {showCommentButton && (
-            <Link to={`/post/${_id}`} className="btn btn-sm btn-light mr-1">
-              <i className="fas fa-comments" />
-              <span className="ml-2">Comments</span>
+            <Link to={`/post/${_id}`} className="btn btn-sm btn-light mr-2">
+              <i className="fas fa-comments mr-2" />Comments
             </Link>
           )}
           {user === auth.user.id && (
             <button
               type="button"
               onClick={this.handleDeleteClick}
-              className="btn btn-sm btn-light mr-1"
+              className="btn btn-sm btn-light mr-2"
             >
               <span className="text-danger">
-                <i className="fas fa-trash-alt" /> Delete
+                <i className="fas fa-trash-alt" />Delete
               </span>
             </button>
           )}

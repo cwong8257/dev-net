@@ -80,7 +80,7 @@ const View = ({
   }
 
   const options = [
-    { label: '-- Select Professional Status --', value: 0 },
+    { label: 'Select Professional Status...', value: 0 },
     { label: 'Developer', value: 'Developer' },
     { label: 'Junior Developer', value: 'Junior Developer' },
     { label: 'Senior Developer', value: 'Senior Developer' },
@@ -94,7 +94,7 @@ const View = ({
     <div className="container">
       <div className="row">
         <div className="col-12 col-md-10 col-lg-8 mx-auto">
-          <h1 className="text-center">Create profile</h1>
+          <h1 className="text-center mb-4">Create profile</h1>
           <p className="lead text-center">
             Let&apos;s get some information to make your profile stand out
           </p>
@@ -103,7 +103,6 @@ const View = ({
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Handle"
-                  placeholder="Handle"
                   name="handle"
                   value={handle}
                   onChange={handleChangeInput}
@@ -114,12 +113,11 @@ const View = ({
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Location"
-                  placeholder="Location"
+                  placeholder="Ex: New York, NY"
                   name="location"
                   value={location}
                   onChange={handleChangeInput}
                   error={errors.location}
-                  info="City & state (eg. Boston, MA)"
                   optional
                 />
               </div>
@@ -137,8 +135,9 @@ const View = ({
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Company"
-                  placeholder="Company"
+                  placeholder="Ex: Microsoft"
                   name="company"
+                  autoComplete="organization"
                   value={company}
                   onChange={handleChangeInput}
                   error={errors.company}
@@ -149,19 +148,17 @@ const View = ({
               <div className="col-12">
                 <TextFieldGroup
                   label="Skills"
-                  placeholder="Skills"
+                  placeholder="Ex: HTML, CSS, JavaScript, PHP"
                   name="skills"
                   value={skills}
                   onChange={handleChangeInput}
                   error={errors.skills}
-                  info="Please use comma separated values (eg.
-                  HTML, CSS, JavaScript, PHP)"
+                  info="Please use comma separated values"
                 />
               </div>
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="GitHub username"
-                  placeholder="GitHub username"
                   name="githubUsername"
                   value={githubUsername}
                   onChange={handleChangeInput}
@@ -173,7 +170,6 @@ const View = ({
               <div className="col-sm-6">
                 <TextFieldGroup
                   label="Website"
-                  placeholder="Website"
                   name="website"
                   value={website}
                   onChange={handleChangeInput}
@@ -185,7 +181,6 @@ const View = ({
               <div className="col">
                 <TextAreaFieldGroup
                   label="About me"
-                  placeholder="About me"
                   name="bio"
                   value={bio}
                   onChange={handleChangeInput}
@@ -195,7 +190,6 @@ const View = ({
                 />
               </div>
             </div>
-
             <div className="mb-3">
               <button type="button" onClick={handleClickSocial} className="btn btn-light">
                 Add Social Network Links

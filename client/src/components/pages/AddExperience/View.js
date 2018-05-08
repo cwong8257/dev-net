@@ -106,8 +106,8 @@ const View = ({
               />
             </div>
           </div>
-          <div className="mt-4">
-            <Link to="/dashboard" className="btn btn-light mr-2">
+          <div className="d-flex justify-content-between mt-4">
+            <Link to="/dashboard" className="btn btn-light">
               Go Back
             </Link>
             <button className="btn btn-info">Add experience</button>

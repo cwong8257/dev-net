@@ -133,6 +133,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
   });
 
   if (
+    profileFields.website &&
     profileFields.website.indexOf('http://') !== 0 &&
     profileFields.website.indexOf('https://') !== 0
   ) {
@@ -147,6 +148,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
     }
 
     if (
+      profileFields.social &&
+      profileFields.social[field] &&
       profileFields.social[field].indexOf('http://') !== 0 &&
       profileFields.social[field].indexOf('https://') !== 0
     ) {

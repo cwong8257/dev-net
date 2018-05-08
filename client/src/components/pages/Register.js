@@ -55,6 +55,7 @@ class Register extends Component {
                   label="Name"
                   type="text"
                   name="name"
+                  autoComplete="name"
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
@@ -63,6 +64,7 @@ class Register extends Component {
                   label="Email address"
                   type="email"
                   name="email"
+                  autoComplete="email"
                   value={this.state.email}
                   error={errors.email}
                   onChange={this.onChange}
@@ -72,6 +74,7 @@ class Register extends Component {
                   label="Password"
                   type="password"
                   name="password"
+                  autoComplete="new-password"
                   value={this.state.password}
                   onChange={this.onChange}
                   error={errors.password}
@@ -80,6 +83,7 @@ class Register extends Component {
                   label="Confirm password"
                   type="password"
                   name="confirm"
+                  autoComplete="new-password"
                   value={this.state.confirm}
                   onChange={this.onChange}
                   error={errors.confirm}

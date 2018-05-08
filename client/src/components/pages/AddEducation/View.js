@@ -94,7 +94,6 @@ const View = ({
               </div>
             </div>
           </div>
-
           <TextAreaFieldGroup
             label="Description"
             name="description"
@@ -104,8 +103,8 @@ const View = ({
             info="Tell us about the program"
             optional
           />
-          <div className="mt-4">
-            <Link to="/dashboard" className="btn btn-light mr-2">
+          <div className="d-flex justify-content-between mt-4">
+            <Link to="/dashboard" className="btn btn-light">
               Go Back
             </Link>
             <button className="btn btn-info">Add education</button>

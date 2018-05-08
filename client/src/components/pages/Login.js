@@ -50,6 +50,7 @@ class Login extends Component {
                         label="Email address"
                         type="email"
                         name="email"
+                        autoComplete="username email"
                         value={this.state.email}
                         onChange={this.onChange}
                         error={errors.email}
@@ -58,6 +59,7 @@ class Login extends Component {
                         label="Password"
                         type="password"
                         name="password"
+                        autoComplete="current-password"
                         value={this.state.password}
                         onChange={this.onChange}
                         error={errors.password}

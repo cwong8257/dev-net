@@ -20,7 +20,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    return <View {...this.props} {...this.state} />;
+    return <View {...this.props} {...this.state} onDeleteClick={this.onDeleteClick} />;
   }
 }
 

@@ -20,7 +20,7 @@ class Experience extends Component {
       <tr key={_id}>
         <td>{company}</td>
         <td>{title}</td>
-        <td>
+        <td className="d-none d-md-table-cell">
           <DateRange from={from} to={to} />
         </td>
         <td className="float-right">
@@ -45,7 +45,7 @@ class Experience extends Component {
                 <tr>
                   <th>Company</th>
                   <th>Title</th>
-                  <th>Years</th>
+                  <th className="d-none d-md-table-cell">Years</th>
                   <th />
                 </tr>
               </thead>

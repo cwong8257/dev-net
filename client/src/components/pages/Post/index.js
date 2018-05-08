@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -22,9 +21,6 @@ class Post extends Component {
     }
     return (
       <div className="container">
-        <Link to="/feed" className="btn btn-light mb-3">
-          Back To feed
-        </Link>
         <PostItem {...post} showCommentButton={false} />
         <CommentForm postId={post._id} />
         <CommentFeed postId={post._id} comments={post.comments} />
