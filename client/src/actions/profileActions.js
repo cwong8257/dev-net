@@ -24,10 +24,10 @@ export const clearProfileLoading = () => ({
   type: PROFILE_NOT_LOADING,
 });
 
-export const createProfile = (profileData, history) => async (dispatch) => {
+export const createProfile = (profileData, redirect) => async (dispatch) => {
   try {
     await axios.post('/api/profile', qs.stringify(profileData));
-    history.push('/dashboard');
+    redirect();
   } catch (err) {
     dispatch(getErrors(err.response.data));
   }
@@ -102,7 +102,6 @@ export const getProfiles = () => async (dispatch) => {
 export const addExperience = (experienceData, history) => async (dispatch) => {
   try {
     await axios.post('/api/profile/experience', qs.stringify(experienceData));
-    history.push('/dashboard');
   } catch (err) {
     dispatch(getErrors(err.response.data));
   }

@@ -12,11 +12,18 @@ const TextFieldGroup = ({
   onChange,
   disabled,
   info,
+  optional,
 }) => (
   <div className="form-group">
+    {label && (
+      <label htmlFor={name}>
+        {label} {optional && <span className="text-muted">(optional)</span>}
+      </label>
+    )}
     <input
+      id={name}
       type={type}
-      className={classnames('form-control form-control-lg', {
+      className={classnames('form-control', {
         'is-invalid': error,
       })}
       placeholder={placeholder}
@@ -40,6 +47,7 @@ TextFieldGroup.propTypes = {
   info: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.string,
+  optional: PropTypes.bool,
 };
 
 TextFieldGroup.defaultProps = {
@@ -49,7 +57,8 @@ TextFieldGroup.defaultProps = {
   error: null,
   info: null,
   disabled: false,
-  label: '',
+  label: null,
+  optional: false,
 };
 
 export default TextFieldGroup;
