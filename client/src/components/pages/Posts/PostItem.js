@@ -96,7 +96,7 @@ class PostItem extends Component {
               className="btn btn-sm btn-light mr-2"
             >
               <span className="text-danger">
-                <i className="fas fa-trash-alt" />Delete
+                <i className="fas fa-trash-alt mr-2" />Delete
               </span>
             </button>
           )}
