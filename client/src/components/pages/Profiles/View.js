@@ -10,7 +10,9 @@ const View = ({ loading, profiles, RenderLoading }) => {
   if (loading) {
     profileItems = <RenderLoading />;
   } else if (profiles.length === 0) {
-    profileItems = <h4>No profiles found...</h4>;
+    profileItems = (
+      <h4 className="text-center text-muted font-italic mt-5">No profiles found...</h4>
+    );
   } else {
     profileItems = profiles.map(profile => <ProfileItem key={profile._id} {...profile} />);
   }

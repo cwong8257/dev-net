@@ -38,23 +38,27 @@ class Experience extends Component {
           <i className="fas fa-plus text-info mr-1" /> Add Experience
         </Link>
         <h4 className="mb-4">Experience</h4>
-        {experience.length > 0 ? (
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead className="thead-dark">
-                <tr>
-                  <th>Company</th>
-                  <th>Title</th>
-                  <th className="d-none d-md-table-cell">Years</th>
-                  <th />
-                </tr>
-              </thead>
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead className="thead-dark">
+              <tr>
+                <th>Company</th>
+                <th>Title</th>
+                <th className="d-none d-md-table-cell">Years</th>
+                <th />
+              </tr>
+            </thead>
+            {experience.length > 0 ? (
               <tbody>{experience}</tbody>
-            </table>
-          </div>
-        ) : (
-          <p className="text-center text-muted font-italic">No experience listed</p>
-        )}
+            ) : (
+              <tbody className="text-center font-italic">
+                <tr>
+                  <td colSpan="4">No experience listed...</td>
+                </tr>
+              </tbody>
+            )}
+          </table>
+        </div>
       </div>
     );
   }

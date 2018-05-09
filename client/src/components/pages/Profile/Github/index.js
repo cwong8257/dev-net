@@ -14,12 +14,15 @@ class Github extends Component {
     githubUsername: null,
   };
 
-  state = {};
+  state = { repos: [] };
 
   async componentDidMount() {
     const { githubUsername } = this.props;
     const repos = await loadData(githubUsername);
-    this.setState({ repos });
+    console.log(repos);
+    if (Array.isArray(repos)) {
+      this.setState({ repos });
+    }
   }
 
   render() {

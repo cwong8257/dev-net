@@ -38,23 +38,27 @@ class Education extends Component {
           <i className="fas fa-plus text-info mr-2" />Add Education
         </Link>
         <h4 className="mb-4">Education</h4>
-        {education.length > 0 ? (
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead className="thead-dark">
-                <tr>
-                  <th>School</th>
-                  <th>Degree</th>
-                  <th className="d-none d-md-table-cell">Years</th>
-                  <th />
-                </tr>
-              </thead>
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead className="thead-dark">
+              <tr>
+                <th>School</th>
+                <th>Degree</th>
+                <th className="d-none d-md-table-cell">Years</th>
+                <th />
+              </tr>
+            </thead>
+            {education.length > 0 ? (
               <tbody>{education}</tbody>
-            </table>
-          </div>
-        ) : (
-          <p className="text-center text-muted font-italic">No experience listed</p>
-        )}
+            ) : (
+              <tbody className="text-center font-italic">
+                <tr>
+                  <td colSpan="4">No education listed...</td>
+                </tr>
+              </tbody>
+            )}
+          </table>
+        </div>
       </div>
     );
   }

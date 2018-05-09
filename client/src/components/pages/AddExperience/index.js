@@ -22,6 +22,7 @@ class AddExperience extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+
     const experienceData = (({
       company, title, location, from, to, current, description,
     }) => ({
@@ -33,6 +34,7 @@ class AddExperience extends Component {
       current,
       description,
     }))(this.state);
+    console.log(this.props.history);
 
     this.props.addExperience(experienceData, this.props.history);
   };

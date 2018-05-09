@@ -90,11 +90,12 @@ const View = ({
     { label: 'Intern', value: 'Intern' },
     { label: 'Other', value: 'Other' },
   ];
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-12 col-md-10 col-lg-8 mx-auto">
-          <h1 className="text-center mb-4">Edit profile</h1>
+          <h1 className="display-4 text-center mb-4">Edit profile</h1>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-sm-6">

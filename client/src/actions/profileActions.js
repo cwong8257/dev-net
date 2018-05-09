@@ -102,6 +102,7 @@ export const getProfiles = () => async (dispatch) => {
 export const addExperience = (experienceData, history) => async (dispatch) => {
   try {
     await axios.post('/api/profile/experience', qs.stringify(experienceData));
+    history.goBack();
   } catch (err) {
     dispatch(getErrors(err.response.data));
   }

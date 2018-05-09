@@ -24,7 +24,7 @@ const ProfileItem = ({
             <img className="img-fluid rounded-circle mb-3" src={avatar} alt={name} />
           </div>
           <div className="col-12 col-md-8 col-lg-6">
-            <h2>{name}</h2>
+            <h2 className="mb-3">{name}</h2>
             <p>
               {status} {company && <span> at {company}</span>}
             </p>

@@ -17,11 +17,11 @@ const View = ({ repos }) => {
         <span className="badge badge-info mr-1">Stars: {stargazersCount}</span>
         <span className="badge badge-success">Forks: {forksCount}</span>
       </div>
-      <h4 className="order-0 order-lg-1">
+      <h5 className="order-0 order-lg-1">
         <a href={htmlUrl} target="_blank">
           {name}
         </a>
-      </h4>
+      </h5>
       <p className="text-muted order-1 order-lg-2">{description}</p>
     </li>
   ));

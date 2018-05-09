@@ -124,12 +124,13 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
     'bio',
     'githubUsername',
   ];
+
   const socialFields = ['youtube', 'twitter', 'facebook', 'linkedin', 'instagram'];
 
   profileFields.user = req.user.id;
 
   standardFields.forEach((field) => {
-    if (req.body[field]) profileFields[field] = req.body[field];
+    profileFields[field] = req.body[field];
   });
 
   if (
@@ -143,9 +144,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
   profileFields.social = {};
 
   socialFields.forEach((field) => {
-    if (req.body[field]) {
-      profileFields.social[field] = req.body[field];
-    }
+    profileFields.social[field] = req.body[field];
 
     if (
       profileFields.social &&
@@ -178,6 +177,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
 
       return res.json(newProfile);
     }
+
     const updatedProfile = await Profile.findOneAndUpdate(
       { user: req.user.id },
       { $set: profileFields },

@@ -38,10 +38,10 @@ class Login extends Component {
 
     return (
       <div className="container">
-        <h1 className="display-4 text-center">Sign in</h1>
-        <p className="text-center mb-4">Sign in to DevNet</p>
         <div className="row">
           <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <h1 className="display-4 text-center">Sign in</h1>
+            <p className="text-center mb-4">Sign in to DevNet</p>
             <div className="row mb-4">
               <div className="col-12">
                 <div className="card">

@@ -5,18 +5,16 @@ const Landing = () => (
   <div className="landing">
     <div className="dark-overlay">
       <div className="landing-header">
-        <h1 className="display-4 mb-3">DevNet</h1>
-        <p className="mb-3">
-          Create a developer profile/portfolio, share posts and get help from other developers
-        </p>
+        <h1 className="display-3 mb-4">DevNet</h1>
+        <p className="mb-4">Connect and share ideas with other developers</p>
         <Link to="/register" className="btn btn-lg btn-info mb-3">
-          Sign Up
+          Get started
         </Link>
         <Link to="/login" className="btn btn-lg btn-light mb-3">
-          Login
+          Sign in
         </Link>
-        <Link to="/profiles" className="btn btn-lg btn-link text-white mb-3">
-          View profiles
+        <Link to="/profiles" className="btn btn-link text-white">
+          <i className="far fa-compass mr-2" />View profiles
         </Link>
       </div>
     </div>

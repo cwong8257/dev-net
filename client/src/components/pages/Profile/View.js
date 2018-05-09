@@ -29,7 +29,7 @@ const View = ({ profile, loading, auth }) => {
         <div className="col-12 col-lg-3 order-lg-0">
           <Skills skills={profile.skills} />
         </div>
-        <div className="col-12 col-lg-9 order-lg-3 ml-lg-auto">
+        <div className="col-12 col-lg-9 order-lg-2 ml-lg-auto">
           <Github />
         </div>
       </div>
