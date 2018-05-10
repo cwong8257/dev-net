@@ -18,7 +18,7 @@ class Github extends Component {
 
   async componentDidMount() {
     const { githubUsername } = this.props;
-    const repos = await loadData(githubUsername, 6);
+    const repos = await loadData(githubUsername, 5);
     console.log(repos);
 
     if (Array.isArray(repos)) {
